@@ -1,0 +1,3 @@
+Flask==2.1.3
+Flask-Cors==5.0.0
+gunicorn==20.1.0  # If you want to use gunicorn for production deployment
