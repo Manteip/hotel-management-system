@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hotel Management Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <style>
+        /* Basic style for collapsible sections */
+        .collapsible {
+            background-color: #777;
+            color: white;
+            cursor: pointer;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .active, .collapsible:hover {
+            background-color: #555;
+        }
+
+        .content {
+            padding: 0 18px;
+            display: none;
+            overflow: hidden;
+            background-color: #f1f1f1;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        h2 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hotel Management Dashboard</h1>
+
+    <button class="collapsible">View All Guest Reservations</button>
+    <div class="content">
+        <table border="1">
+            <tr>
+                <th>Room Number</th>
+                <th>Room Type</th>
+                <th>Price per Night</th>
+                <th>Status</th>
+            </tr>
+            {% for reservation in reservations %}
+            <tr>
+                <td>{{ reservation[0] }}</td>
+                <td>{{ reservation[1] }}</td>
+                <td>{{ reservation[2] }}</td>
+                <td>{{ reservation[3] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <button class="collapsible">View Reservations in Date Range</button>
+    <div class="content">
+        <table border="1">
+            <tr>
+                <th>Guest Name</th>
+                <th>Check-In Date</th>
+                <th>Check-Out Date</th>
+                <th>No. of Guests</th>
+            </tr>
+            {% for reservation in reservations_in_range %}
+            <tr>
+                <td>{{ reservation[0] }}</td>
+                <td>{{ reservation[1] }}</td>
+                <td>{{ reservation[2] }}</td>
+                <td>{{ reservation[3] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <button class="collapsible">View Total Income</button>
+    <div class="content">
+        <p>Total Income: {{ total_income[0] }} USD</p>
+    </div>
+
+    <button class="collapsible">View Available Rooms</button>
+    <div class="content">
+        <table border="1">
+            <tr>
+                <th>Room Number</th>
+                <th>Room Type</th>
+                <th>Price per Night</th>
+                <th>Status</th>
+            </tr>
+            {% for room in available_rooms %}
+            <tr>
+                <td>{{ room[0] }}</td>
+                <td>{{ room[1] }}</td>
+                <td>{{ room[2] }}</td>
+                <td>{{ room[3] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <button class="collapsible">View Guest Reservation Details</button>
+    <div class="content">
+        <table border="1">
+            <tr>
+                <th>Room Number</th>
+                <th>Check-In Date</th>
+                <th>Check-Out Date</th>
+                <th>Special Requests</th>
+            </tr>
+            {% for guest in guest_details %}
+            <tr>
+                <td>{{ guest[4] }}</td>
+                <td>{{ guest[1] }}</td>
+                <td>{{ guest[2] }}</td>
+                <td>{{ guest[3] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        for (var i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

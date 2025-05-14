@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Guest Details</title>
+</head>
+<body>
+    <h1>Guest Reservation Details</h1>
+    <table border="1">
+        <tr>
+            <th>Room Number</th>
+            <th>Check-In Date</th>
+            <th>Check-Out Date</th>
+            <th>Special Requests</th>
+        </tr>
+        {% for guest in guest_info %}
+        <tr>
+            <td>{{ guest[4] }}</td>
+            <td>{{ guest[1] }}</td>
+            <td>{{ guest[2] }}</td>
+            <td>{{ guest[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/">Back to Home</a>
+</body>
+</html>

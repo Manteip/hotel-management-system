@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reservations in Date Range</title>
+</head>
+<body>
+    <h1>Reservations in Selected Date Range</h1>
+    <table border="1">
+        <tr>
+            <th>Guest Name</th>
+            <th>Check-In Date</th>
+            <th>Check-Out Date</th>
+            <th>No. of Guests</th>
+        </tr>
+        {% for reservation in reservations %}
+        <tr>
+            <td>{{ reservation[0] }}</td>
+            <td>{{ reservation[1] }}</td>
+            <td>{{ reservation[2] }}</td>
+            <td>{{ reservation[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/">Back to Home</a>
+</body>
+</html>
